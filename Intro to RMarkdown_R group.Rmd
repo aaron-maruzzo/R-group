@@ -10,23 +10,28 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Benefits of R Markdown
+## R Markdown
 
--   You can code and include free text.
--   You can create reports in HTML, PDF, Word, Powerpoint, and more!
--   You can make updates to reports more efficiently.
--   You can use Markdown along with R scripts.
+-   Already installed in all R Studio (File \> New File \> R Markdown)
+-   Markdown makes it easier for users to write code and free-text at the same time
+-   Code is organized into "chunks" that can be run individually
+-   Markdown files can be used to create (called **"knit"**) files
+in HTML, PDF, Word, Powerpoint, and more
+-   If your end product is a report of statistics, Markdown can be especially useful to automate making a report
+-   Markdown is compatible with Github and traditional R language as well as Python, Bash, SQL, and more
 
 ## Let's download knitr
 
-```{r, echo=F, warning=F}
+```{r, echo=T, warning=F}
 #install.packages("knitr")
 library(knitr)
 ```
 
-## You can use Markdown to reference your code in the text
+## In-line expressions
 
-Can you reference chunks in text? I had excluded people from the dataset (see chunk cars).
+With Markdown you can write sentences that reference elements of your data analysis.
+
+For example, let's say we wanted to describe the chicken weights dataset. How many chickens are there?
 
 ```{r cars, echo = TRUE}
 data(chickwts)
@@ -34,20 +39,67 @@ head(chickwts, n=10)
 nrow(chickwts)
 ```
 
-## Slide with Plot
+In-line expressions are written as backtick (`) r, then some code, and then another backtick. (Demonstrate)
 
-When you're working in markdown it can be hard to keep track of your writing especially when you're writing long notes like this. i am aaron. i talk a lot. no i don't. this is my inner dialogue. banana.
+These are the same: 
 
-```{r plot, message=F}
+-   "There were 71 chickens" (the explicit approach)
+-   "There were `r nrow(chickwts)` chickens" (the in-line approach) 
+
+This can also be helpful: 
+
+- The mean weight of the chickens was `r round(mean(chickwts$weight),2)` units. 
+
+```{r, echo=T}
+mod <- summary(lm(weight ~ feed, data=chickwts))
+```
+
+- Compared to casein feed, horsebean feed was associated with `r mod$coefficients[2]` units difference weight.
+
+## Contingency tables
+
+If you're creating many, many two-way tables and want an efficient way of creating a report that contains your tables, Markdown is very helpful.
+
+```{r, echo=T}
+chickwts$dead <- sample(c(0,1), size=nrow(chickwts), replace = T)
+chickwts$color <- sample(c("blue", "green", "red"), size=nrow(chickwts), replace=T)
+chickwts$eyecolor <- sample(c("yellow", "orange", "purple"), size=nrow(chickwts), replace=T)
+
+table(chickwts$dead, chickwts$feed, chickwts$color)
+table(chickwts$dead, chickwts$feed, chickwts$eyecolor)
+
+```
+
+## Tips and tricks to get started with Markdown
+
+-   You can toggle between "Source" and "Visual" to preview your script as an HTML product (can help review your own work). The source-visual toggle is located below the save button.
+-   You can use hashtags to create headers and create sections of your report. Open Outline (on the upper right hand side) and navigate your own document by section.
+- Each chunk comes with a play button (to run the chunk), play all prior chunks, and a settings button. The settings allow you to control how the chunk will appear and work in the final document. For example, you can control when to show/hide outputs (**"echo"**), show/hide warnings (**"warning"**), show/hide messages (**"message"**).
+- As long as you have datasets in your working environment (right), you can use Markdown alongside traditional R scripts. Try using **source()** at the top of your Markdown file, and writing comments from your analysis in Markdown.
+
+## Plots
+
+Yes, you can also include plots in Markdown. Note: You may still need to adjust the size of your plots according to your output file.
+
+```{r plot, echo=T, warning=F, message=F}
+# note- this chunk has warning=F and message=F to hide the messages from uploading these packages!
 library(ggplot2)
 library(tidyverse)
 chickwts %>%
   ggplot(aes(x = feed, y = weight)) + 
   geom_boxplot() + 
   geom_point()
+
+chickwts %>%
+  ggplot(aes(x = feed, y = weight)) + 
+  geom_boxplot() + 
+  geom_point() +
+  facet_wrap(~dead)
 ```
 
-## YouTube videos
+
+## YouTube videos and other helpful resources
 
 -   <https://www.youtube.com/watch?v=DNS7i2m4sB0>
 -   <https://www.youtube.com/watch?v=asHhuHRxhvo>
+- <https://rmarkdown.rstudio.com/index.html> 
