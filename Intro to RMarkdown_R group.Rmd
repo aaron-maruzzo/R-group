@@ -1,0 +1,53 @@
+---
+title: "Quick tour through Markdown"
+author: "Anaga and Aaron"
+date: "2025-04-15"
+output:
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Benefits of R Markdown
+
+-   You can code and include free text.
+-   You can create reports in HTML, PDF, Word, Powerpoint, and more!
+-   You can make updates to reports more efficiently.
+-   You can use Markdown along with R scripts.
+
+## Let's download knitr
+
+```{r, echo=F, warning=F}
+#install.packages("knitr")
+library(knitr)
+```
+
+## You can use Markdown to reference your code in the text
+
+Can you reference chunks in text? I had excluded people from the dataset (see chunk cars).
+
+```{r cars, echo = TRUE}
+data(chickwts)
+head(chickwts, n=10)
+nrow(chickwts)
+```
+
+## Slide with Plot
+
+When you're working in markdown it can be hard to keep track of your writing especially when you're writing long notes like this. i am aaron. i talk a lot. no i don't. this is my inner dialogue. banana.
+
+```{r plot, message=F}
+library(ggplot2)
+library(tidyverse)
+chickwts %>%
+  ggplot(aes(x = feed, y = weight)) + 
+  geom_boxplot() + 
+  geom_point()
+```
+
+## YouTube videos
+
+-   <https://www.youtube.com/watch?v=DNS7i2m4sB0>
+-   <https://www.youtube.com/watch?v=asHhuHRxhvo>
