@@ -33,7 +33,7 @@ Source: <https://r4ds.had.co.nz/r-markdown.html>
 
 ## Some examples!
 
-1.  Finished products: with the package kable, for nice packages: <file:///C:/Users/AnagaDinesh/Coding/GitHub/R-group/summary_table.html>
+1.  Finished products: with the package kable, for nice packages: <https://github.com/aaron-maruzzo/R-group/blob/main/summary_table.html>
 
 2.  To demo to other data scientists: <https://cran.r-project.org/web/packages/ggplot2/vignettes/ggplot2.html>
 
