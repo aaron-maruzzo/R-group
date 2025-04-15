@@ -4,7 +4,6 @@ author: "Anaga and Aaron"
 date: "2025-04-15"
 output: 
   slidy_presentation: default
-  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -32,7 +31,7 @@ From Hadley Wickham:
 
 Source: <https://r4ds.had.co.nz/r-markdown.html>
 
-## Let's download knitr (@Anaga - do we really need this or is this and rmarkdown pre-loaded in RStudio?)
+## Let's download knitr
 
 ```{r knitr, echo=T, warning=F}
 #install.packages("knitr")
@@ -89,7 +88,16 @@ table(chickwts$dead, chickwts$feed, chickwts$eyecolor)
 
 ## Pretty tables
 
+Helpful libraries: 
+
+- gtsummary 
+- kable (@Anaga will demo!)
+- kableExtra
+- flextable
+
 ```{r chickwts-pretty-tables, echo=T, warning=F}
+# example using gtsummary
+
 # install.packages("gtsummary")
 library(gtsummary)
 
@@ -104,19 +112,21 @@ chickwts %>%
 
 ```
 
-
 ## Tips and tricks to get started with Markdown
 
 **Cheat Sheet and Refrence Guide** for R Markdown available with Help \> Cheatsheets
 
 -   You can toggle between "Source" and "Visual" to preview your script as an HTML product (can help review your own work). The source-visual toggle is located below the save button.
--   You can use hashtags to create headers and create sections of your report. Open Outline (on the upper right hand side) and navigate your own document by section.
--   Each chunk comes with a play button (to run the chunk), play all prior chunks, and a settings button. The settings allow you to control how the chunk will appear and work in the final document. For example, you can control when to show/hide outputs (**"echo"**), show/hide warnings (**"warning"**), show/hide messages (**"message"**).
+-   You can use hashtags to create headers/sections. Open Outline (on the upper right hand side) and navigate your own document by section.
+-   Each chunk comes with a play button (to run the chunk), play all prior chunks, and a settings button. The settings allow you to customize your code chunks and the chunk's results. \~60 options available.
+    -   See the full list here: <http://yihui.name/knitr/options/>.
+    -   For example, **echo**=F prevents the code, but not the results, from appearing in the finished file (echo=T when you want to show the code)
+    -   You can also customize when to hide warnings (**warning**=F) or hide messages (**message**=F). Useful when loading packages.
 -   As long as you have datasets in your working environment (right), you can use Markdown alongside traditional R scripts. Try using **source()** at the top of your Markdown file, and writing comments from your analysis in Markdown.
 
 ## Plots
 
-Yes, you can also include plots in Markdown. Note: You may still need to adjust the size of your plots according to your output file.
+You can also include plots in Markdown. You may still need to adjust the size of your plots according to your output file.
 
 ```{r chickwts-plot, echo=T, warning=F, message=F}
 # note- this chunk has warning=F and message=F to hide the messages from uploading these packages!
@@ -134,9 +144,31 @@ chickwts %>%
   facet_wrap(~dead)
 ```
 
+```{r chickwts-plot2, echo=T, fig.width=10, fig.height=5}
+# set fig.width=10, fig.height=5
+# defaults to 7 inches
+chickwts %>%
+  ggplot(aes(x = feed, y = weight)) + 
+  geom_boxplot() + 
+  geom_point() +
+  facet_wrap(~dead)
+```
+
 ## YouTube videos and other helpful resources
 
-- Hadley Wickham's Markdown introduction (**recommended**): <https://r4ds.had.co.nz/r-markdown.html>
--  Video on getting started with Markdown: <https://www.youtube.com/watch?v=DNS7i2m4sB0>
--  Video on getting started with Markdown: <https://www.youtube.com/watch?v=asHhuHRxhvo>
--  RStudio's R Markdown introduction: <https://rmarkdown.rstudio.com/index.html>
+-   Hadley Wickham's Markdown introduction (**recommended**): <https://r4ds.had.co.nz/r-markdown.html>
+-   Video on getting started with Markdown: <https://www.youtube.com/watch?v=DNS7i2m4sB0>
+-   Video on getting started with Markdown: <https://www.youtube.com/watch?v=asHhuHRxhvo>
+-   RStudio's R Markdown introduction: <https://rmarkdown.rstudio.com/index.html>
+
+## Activity
+
+Your turn! Use Markdown to write about the regressions we started last week! 
+
+Try at least one: 
+
+1. Create a PDF report with section headers. 
+
+2. Use an in-line expression. 
+
+3. Create a few different tables and plots, and a brief description as text. 
