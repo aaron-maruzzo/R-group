@@ -74,6 +74,7 @@ Consider the following sentences:
 ```{r chickwts-model, echo=T}
 levels(chickwts$feed)
 mod <- summary(lm(weight ~ feed, data=chickwts))
+mod
 ```
 
 -   Horsebean feed is significantly associated with an average decrease of `r round(mod$coefficients[2], 2)` grams compared to casein feed.
@@ -122,7 +123,7 @@ chickwts %>%
 
 ## Tips and tricks to get started with Markdown
 
-**Cheat Sheet and Refrence Guide** for R Markdown available with Help \> Cheatsheets
+**Cheat Sheet and Reference Guide** for R Markdown available with Help \> Cheatsheets
 
 -   You can toggle between "Source" and "Visual" to preview your script as an HTML product (can help review your own work). The source-visual toggle is located below the save button.
 -   You can use hashtags to create headers/sections. Open Outline (on the upper right hand side) and navigate your own document by section.
