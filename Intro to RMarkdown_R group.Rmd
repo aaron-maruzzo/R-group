@@ -88,12 +88,12 @@ table(chickwts$dead, chickwts$feed, chickwts$eyecolor)
 
 ## Pretty tables
 
-Helpful libraries: 
+Helpful libraries:
 
-- gtsummary 
-- kable (@Anaga will demo!)
-- kableExtra
-- flextable
+-   gtsummary
+-   kable (@Anaga will demo!)
+-   kableExtra
+-   flextable
 
 ```{r chickwts-pretty-tables, echo=T, warning=F}
 # example using gtsummary
@@ -163,12 +163,12 @@ chickwts %>%
 
 ## Activity
 
-Your turn! Use Markdown to write about the regressions we started last week! 
+Your turn! Use Markdown to write about the regressions we started last week!
 
-Try at least one: 
+Try at least one:
 
-1. Create a PDF report with section headers. 
+1.  Create a PDF report with section headers.
 
-2. Use an in-line expression. 
+2.  Use an in-line expression.
 
-3. Create a few different tables and plots, and a brief description as text. 
+3.  Create a few different tables and plots, and a brief description as text.
