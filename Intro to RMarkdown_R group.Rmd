@@ -172,7 +172,9 @@ chickwts %>%
 
 ## Activity
 
-Your turn! Use Markdown to write about the regressions we started last week!
+Your turn! Use Markdown to write about the regressions we started last week! You'll already have read in the data and should have graphs you can format in an R markdown file.
+
+Here's the folder path: C:\Silent Spring Dropbox\\1. Central_Files\Statistics and data management\R\\2025-04-04 building a regression model
 
 Try at least one:
 
