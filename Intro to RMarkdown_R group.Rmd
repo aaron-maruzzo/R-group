@@ -31,6 +31,14 @@ From Hadley Wickham:
 
 Source: <https://r4ds.had.co.nz/r-markdown.html>
 
+## Some examples!
+
+1.  Finished products: with the package kable, for nice packages: <file:///C:/Users/AnagaDinesh/Coding/GitHub/R-group/summary_table.html>
+
+2.  To demo to other data scientists: <https://cran.r-project.org/web/packages/ggplot2/vignettes/ggplot2.html>
+
+3.  As a lab notebook: <https://rpubs.com/MaisAlraee/1297517>
+
 ## Let's download knitr
 
 ```{r knitr, echo=T, warning=F}
@@ -50,7 +58,7 @@ head(chickwts, n=10)
 nrow(chickwts)
 ```
 
-In-line expressions are written as backtick (\`) r backtick (\`).
+In-line expressions are written as \` r \`.
 
 For example, these render the same in the final output (this slide) but the code looks different:
 
@@ -91,7 +99,7 @@ table(chickwts$dead, chickwts$feed, chickwts$eyecolor)
 Helpful libraries:
 
 -   gtsummary
--   kable (@Anaga will demo!)
+-   kable (@Anaga's table!)
 -   kableExtra
 -   flextable
 
@@ -169,6 +177,12 @@ Try at least one:
 
 1.  Create a PDF report with section headers.
 
+Hint: Look at this (<https://r4ds.had.co.nz/r-markdown.html>) and change html to pdf
+
 2.  Use an in-line expression.
 
+Reminder: \` r blahblahblah \`
+
 3.  Create a few different tables and plots, and a brief description as text.
+
+Hint: Write something like this to start a chunk: \`\`\` {r chickwts-tables, echo=T or F} blahblahblah \`\`\`
